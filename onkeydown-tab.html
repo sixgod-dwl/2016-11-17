@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title></title>
+<style type="text/css">
+body{
+	margin:0;
+}
+img{
+	border:none;
+	vertical-align: top;
+	width:300px;
+	height: 200px;
+	float: left;
+}
+#box{
+	width:300px;
+	height: 200px;
+	border:1px solid #000;
+	overflow: hidden;
+	margin:30px auto;
+	position: relative;
+}
+#div1{
+	width: 200%;
+	position: absolute;
+}
+</style>
+</head>
+<body>
+<div id="box">
+	<div id="div1">
+		<img src="img/img14.jpg"/>
+		<img src="img/img36.jpg"/>
+	</div>
+</div>
+</body>
+<script type="text/javascript" src="MTween.js"></script>
+<script type="text/javascript">
+(function(){
+	var img=document.querySelectorAll("img");
+	var div=document.getElementById("div1");
+	var data=["img/img14.jpg","img/img36.jpg","img/img23.jpg","img/img32.jpg"];
+	var w=img[0].offsetWidth;
+	var h=img[0].offsetHeight;
+	var n=0;
+	document.addEventListener("keydown",fnKeyDown);
+	function fnKeyDown(e){
+		if(e.keyCode==37||e.keyCode==39){
+			div.style.width="200%";//得到横向排列
+			div.style.top=0;
+			if(e.keyCode==39){
+				img[0].src=data[n];
+				div.style.left=0;
+				img[1].src=data[n = n<data.length-1 ? ++n : 0];
+				muchTween(div,{left:-w},500,"linear");
+			
+			}else{
+				img[1].src=data[n];
+				div.style.left=-w+"px";
+				img[0].src=data[n = n>0 ? --n : data.length-1];
+				muchTween(div,{left:0},500,"linear");
+			}
+			
+			
+		}else if(e.keyCode==38||e.keyCode==40){
+			div.style.width="100%";//得到纵向排列
+			div.style.left=0;
+			if(e.keyCode==40){
+				img[0].src=data[n];
+				div.style.top=0;
+				img[1].src=data[n = n<data.length-1 ? ++n : 0];
+				muchTween(div,{top:-h},500,"linear");
+			}else{
+				img[1].src=data[n];
+				div.style.top=-w+"px";
+				img[0].src=data[n = n>0 ? --n : data.length-1];
+				muchTween(div,{top:0},500,"linear");
+			}
+		}
+	};
+})()
+</script>
+</html>
