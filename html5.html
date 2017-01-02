@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html >
+ <head>
+  <title> 7月 日的练习题 </title>
+   <meta charset="utf-8" />
+   <!--今日涉及内容
+  	3d下所有样式 记得在移动端使用的时候，要加前缀。
+ 	 perspective：像素---- 景深 
+ 	 transform：
+ 	      参数：rotate();
+ 	         rotateX();
+ 	         rotateY();
+ 	         rotateZ();
+ 	         
+ 	         translate();
+ 	         translateX();
+ 	         translateY();
+ 	         translateZ();
+  
+   -->
+<style type="text/css" media="screen">
+   .wrap{
+   	width:500px;
+   	height: 500px;
+   	border:1px solid #000;
+   	perspective: 100px;
+   }
+   .box{
+   	width:100px;
+   	height:100px;
+   	background: red;
+   	margin:200px;
+   	transition: 1s;
+   }
+  .wrap:hover .box{
+  	transform: rotateX(360deg);
+  }
+</style>
+  
+ </head>
+
+ <body>
+   <div class="wrap">
+   		<div class="box">dong</div>
+   </div>
+ </body>
+</html>
